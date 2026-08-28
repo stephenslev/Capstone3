@@ -35,21 +35,21 @@
 
 Bring together your code from Day 2, Day 3, and yesterday's Shared Tool Registry lab into one project:
 
-```powershell
-pip install langgraph langchain-core langchain-anthropic anthropic --break-system-packages
+```bash
+pip install langgraph boto3 python-dotenv --break-system-packages
 ```
 
 ```python
 from langgraph.graph import StateGraph, END
 from typing import TypedDict, Optional
-import anthropic
+from bedrock_client import invoke_claude
 from agents.sql_agent import run_sql_agent
 from agents.retrieval_agent import run_retrieval_agent
 from dotenv import load_dotenv
 load_dotenv()
-
-client = anthropic.Anthropic()
 ```
+
+> **This calls Claude via Bedrock, not the direct Anthropic SDK** — same as every other lab this week. `langchain-core` and `langchain-anthropic` aren't needed here either; this orchestrator is built directly with `langgraph` and your own `bedrock_client.py` helper, not LangChain's Anthropic integration.
 
 ## Part 2: Defining the Orchestrator State
 
@@ -158,26 +158,20 @@ def synthesise(state: OrchestratorState) -> OrchestratorState:
             "token_usage": {"input": 0, "output": 0}
         }
 
-    synthesis = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=800,
-        messages=[{
-            "role": "user",
-            "content": (
-                f"Using the information below, answer the following question clearly.\n"
-                f"Cite which agent(s) and source(s) the information came from.\n\n"
-                f"Question: {state['question']}\n\n"
-                f"Information:\n{context}"
-            )
-        }]
+    prompt = (
+        f"Using the information below, answer the following question clearly.\n"
+        f"Cite which agent(s) and source(s) the information came from.\n\n"
+        f"Question: {state['question']}\n\n"
+        f"Information:\n{context}"
     )
+    result = invoke_claude(prompt, max_tokens=800)
 
     return {
         **state,
-        "final_answer": synthesis.content[0].text,
+        "final_answer": result["text"],
         "token_usage": {
-            "input": synthesis.usage.input_tokens,
-            "output": synthesis.usage.output_tokens
+            "input": result["input_tokens"],
+            "output": result["output_tokens"]
         }
     }
 ```
