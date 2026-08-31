@@ -33,7 +33,7 @@
 
 ## Part 1: Setup
 
-Bring together your code from Day 2, Day 3, and yesterday's Shared Tool Registry lab into one project:
+Bring together your code from Day 2, Day 3, and yesterday's Shared Tool Registry lab into one project. Create a new file, `orchestrator.py`, in the **same directory** where your existing `bedrock_client.py` and `agents/` package (containing `sql_agent.py` and `retrieval_agent.py`) already live from those earlier labs — this file imports them directly, so it won't run from anywhere else. Every code block from Parts 2, 3, 5, 6, and 7 below builds on the ones before it and belongs in this same file, added in order (Part 4 is a design discussion with no code to add).
 
 ```bash
 pip install langgraph boto3 python-dotenv --break-system-packages
@@ -203,6 +203,8 @@ Notice both worker nodes always run in sequence, but each internally checks `sta
 
 ## Part 8: Testing the Full Orchestrator
 
+By this point, `orchestrator.py` should contain, in order: Part 1's imports, Part 2's `OrchestratorState`, Part 3's `route_question`, Part 5's `call_sql_agent`/`call_retrieval_agent`, Part 6's `synthesise`, and Part 7's `build_orchestrator()` plus the `orchestrator = build_orchestrator()` line. Add the block below to the end of that file — this is what actually runs the graph and prints results:
+
 ```python
 test_questions = [
     "How many active projects do we have?",                                  # sql only
@@ -220,6 +222,14 @@ for q in test_questions:
     print(f"Answer: {result['final_answer']}")
     print(f"Tokens: {result['token_usage']}")
 ```
+
+Run it from your terminal:
+
+```bash
+python3 orchestrator.py
+```
+
+You should see all three test questions printed with their route, final answer, and token usage.
 
 > **✅ Check:** Confirm the third question — the one requiring both agents — now produces a properly combined answer citing both sources. Compare this directly against yesterday's `suggest_tool` result for the same kind of question, which could only suggest one tool. This comparison is the concrete payoff of today's architecture.
 
