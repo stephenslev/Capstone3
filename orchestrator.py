@@ -110,18 +110,19 @@ def build_orchestrator():
 
 orchestrator = build_orchestrator()
 
-test_questions = [
-    "How many active projects do we have?",                                  # sql only
-    "What is our onboarding process?",                                        # retrieval only
-    "How many active projects do we have, and what's our onboarding policy?", # both
-]
+if __name__ == "__main__":
+    test_questions = [
+        "How many active projects do we have?",                                  # sql only
+        "What is our onboarding process?",                                        # retrieval only
+        "How many active projects do we have, and what's our onboarding policy?", # both
+    ]
 
-for q in test_questions:
-    print(f"\n{'='*60}\nQ: {q}")
-    result = orchestrator.invoke({
-        "question": q, "route": None, "sql_result": None,
-        "retrieval_result": None, "final_answer": None, "token_usage": None
-    })
-    print(f"Route: {result['route']}")
-    print(f"Answer: {result['final_answer']}")
-    print(f"Tokens: {result['token_usage']}")
+    for q in test_questions:
+        print(f"\n{'='*60}\nQ: {q}")
+        result = orchestrator.invoke({
+            "question": q, "route": None, "sql_result": None,
+            "retrieval_result": None, "final_answer": None, "token_usage": None
+        })
+        print(f"Route: {result['route']}")
+        print(f"Answer: {result['final_answer']}")
+        print(f"Tokens: {result['token_usage']}")
