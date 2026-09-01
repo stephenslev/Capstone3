@@ -46,7 +46,7 @@ def retrieve(question: str, top_k: int = 5) -> list[dict]:
     ]
 
 
-def generate_cited_answer(question: str, chunks: list[dict]) -> str:
+def generate_cited_answer(question: str, chunks: list[dict]) -> tuple[str, dict]:
     context = "\n\n".join([f"[Source {i+1}: {c['source']}]\n{c['content']}" for i, c in enumerate(chunks)])
     prompt = (
         "Answer the question using ONLY the context provided below. "
@@ -54,7 +54,8 @@ def generate_cited_answer(question: str, chunks: list[dict]) -> str:
         "Always cite the source number(s) you used.\n\n"
         f"CONTEXT:\n{context}\n\nQUESTION: {question}\n\nANSWER:"
     )
-    return invoke_claude(prompt, max_tokens=500)["text"]
+    result = invoke_claude(prompt, max_tokens=500)
+    return result["text"], {"input": result["input_tokens"], "output": result["output_tokens"]}
 
 
 def check_grounding(answer: str, chunks: list[dict]) -> bool:
@@ -68,12 +69,12 @@ def check_grounding(answer: str, chunks: list[dict]) -> bool:
 def run_retrieval_agent(question: str) -> dict:
     chunks = retrieve(question)
     if not chunks:
-        return {"success": False, "answer": "No relevant documents found.", "sources": [], "metadata": {"chunk_count": 0, "grounded": False}}
+        return {"success": False, "answer": "No relevant documents found.", "sources": [], "metadata": {"chunk_count": 0, "grounded": False, "token_usage": {"input": 0, "output": 0}}}
 
-    answer = generate_cited_answer(question, chunks)
+    answer, usage = generate_cited_answer(question, chunks)
     return {
         "success": True,
         "answer": answer,
         "sources": [c["source"] for c in chunks],
-        "metadata": {"chunk_count": len(chunks), "grounded": check_grounding(answer, chunks)}
+        "metadata": {"chunk_count": len(chunks), "grounded": check_grounding(answer, chunks), "token_usage": usage}
     }
