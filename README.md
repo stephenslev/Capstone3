@@ -237,11 +237,23 @@ You should see all three test questions printed with their route, final answer, 
 
 This lesson environment can run in a container instead of a local Python install — useful since `retrieval_agent.py`'s `sentence-transformers` dependency pulls in a full PyTorch install.
 
+### One-time setup: Docker permissions
+
+If `docker compose build` fails with a `permission denied` error connecting to the Docker daemon, your user isn't in the `docker` group yet. Fix it once:
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+Then log out and back in (or run `newgrp docker` in your current terminal) for the group change to take effect. After that, every `docker compose` command below works without `sudo`.
+
+> **If you can't add yourself to the `docker` group** (locked-down environment) and must keep using `sudo docker compose ...`: `sudo` resets `$HOME` to `/root` by default, which breaks the `~/.aws` mount below silently (it mounts an empty/nonexistent directory instead of your real credentials). Use `sudo -E docker compose ...` instead — the `-E` flag preserves your environment, including `$HOME`, so `~` still resolves to your own home directory.
+
 ```bash
 docker compose build
 ```
 
-Provide AWS credentials for the locked-down IAM identity either as environment variables before running, or by mounting `~/.aws` (see the commented line in `docker-compose.yml`):
+Provide AWS credentials for the locked-down IAM identity either as environment variables before running, or by mounting `~/.aws` (already enabled in `docker-compose.yml`):
 
 ```bash
 export AWS_ACCESS_KEY_ID=...
