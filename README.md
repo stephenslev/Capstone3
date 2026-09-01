@@ -206,22 +206,25 @@ Notice both worker nodes always run in sequence, but each internally checks `sta
 By this point, `orchestrator.py` should contain, in order: Part 1's imports, Part 2's `OrchestratorState`, Part 3's `route_question`, Part 5's `call_sql_agent`/`call_retrieval_agent`, Part 6's `synthesise`, and Part 7's `build_orchestrator()` plus the `orchestrator = build_orchestrator()` line. Add the block below to the end of that file — this is what actually runs the graph and prints results:
 
 ```python
-test_questions = [
-    "How many active projects do we have?",                                  # sql only
-    "What is our onboarding process?",                                        # retrieval only
-    "How many active projects do we have, and what's our onboarding policy?", # both
-]
+if __name__ == "__main__":
+    test_questions = [
+        "How many active projects do we have?",                                  # sql only
+        "What is our onboarding process?",                                        # retrieval only
+        "How many active projects do we have, and what's our onboarding policy?", # both
+    ]
 
-for q in test_questions:
-    print(f"\n{'='*60}\nQ: {q}")
-    result = orchestrator.invoke({
-        "question": q, "route": None, "sql_result": None,
-        "retrieval_result": None, "final_answer": None, "token_usage": None
-    })
-    print(f"Route: {result['route']}")
-    print(f"Answer: {result['final_answer']}")
-    print(f"Tokens: {result['token_usage']}")
+    for q in test_questions:
+        print(f"\n{'='*60}\nQ: {q}")
+        result = orchestrator.invoke({
+            "question": q, "route": None, "sql_result": None,
+            "retrieval_result": None, "final_answer": None, "token_usage": None
+        })
+        print(f"Route: {result['route']}")
+        print(f"Answer: {result['final_answer']}")
+        print(f"Tokens: {result['token_usage']}")
 ```
+
+> **Why the `if __name__ == "__main__":` guard matters here, specifically:** this afternoon's Deployment Patterns on AWS lesson wraps this file in a Lambda handler with `from orchestrator import build_orchestrator`. Without this guard, that import re-runs all 3 test questions — real Bedrock, database, and OpenSearch calls — on every single Lambda cold start, before the handler is even callable. Same reasoning applies any time this module gets imported rather than run directly, including this afternoon's tokenomics lesson.
 
 Run it from your terminal:
 
