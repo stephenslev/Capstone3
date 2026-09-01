@@ -233,6 +233,25 @@ You should see all three test questions printed with their route, final answer, 
 
 > **✅ Check:** Confirm the third question — the one requiring both agents — now produces a properly combined answer citing both sources. Compare this directly against yesterday's `suggest_tool` result for the same kind of question, which could only suggest one tool. This comparison is the concrete payoff of today's architecture.
 
+## Running in Docker
+
+This lesson environment can run in a container instead of a local Python install — useful since `retrieval_agent.py`'s `sentence-transformers` dependency pulls in a full PyTorch install.
+
+```bash
+docker compose build
+```
+
+Provide AWS credentials for the locked-down IAM identity either as environment variables before running, or by mounting `~/.aws` (see the commented line in `docker-compose.yml`):
+
+```bash
+export AWS_ACCESS_KEY_ID=...
+export AWS_SECRET_ACCESS_KEY=...
+export AWS_SESSION_TOKEN=...   # if using temporary credentials
+docker compose run --rm orchestrator
+```
+
+The working directory is bind-mounted into the container, so edits to `orchestrator.py` or `agents/` take effect without rebuilding the image — only rebuild after changing `requirements.txt`. The `sentence-transformers` model cache is kept in a named volume (`hf-cache`) so it downloads once, not on every run.
+
 ## Resources
 
 - [LangGraph Multi-Agent Systems](https://langchain-ai.github.io/langgraph/concepts/multi_agent/)
