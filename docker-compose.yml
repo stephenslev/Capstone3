@@ -1,0 +1,19 @@
+services:
+  orchestrator:
+    build: .
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN:-}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-us-east-1}
+    volumes:
+      - ./:/app
+      # Uncomment to authenticate via an AWS profile/credentials file instead
+      # of the env vars above:
+      # - ~/.aws:/root/.aws:ro
+      - hf-cache:/app/.cache/huggingface
+    working_dir: /app
+
+volumes:
+  hf-cache:
