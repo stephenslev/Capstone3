@@ -1,7 +1,5 @@
 # Building the Orchestrator
 
-**Session Time:** 90–120 minutes (full lesson — Agent Tool Design folded in)
-
 ## Prerequisites
 
 - Multi-Agent Architectures (this morning)
@@ -25,15 +23,16 @@
   - [Resources](#resources)
 
 ## Learning Objectives
-
-- Build a LangGraph orchestrator that routes between two specialist agents
-- Apply agent tool design principles so routing decisions are reliable
-- Implement a synthesis step that combines multiple agent outputs into one cited answer
-- Test an orchestrator against questions requiring one agent, the other, or both
+By the end of this lesson, you will be able to:
+- Build a LangGraph orchestrator that routes questions to appropriate specialist agents
+- Apply agent tool-design principles to improve routing decisions based on tool scope and boundaries
+- Implement a synthesis step that combines results from multiple specialist agents into a coherent, cited response
+- Evaluate an orchestrator using single-agent and multi-agent questions and identify routing or synthesis failures
+- Analyze common multi-agent failure modes, including incomplete routing, synthesis errors, redundant calls, and cascading failures
 
 ## Part 1: Setup
 
-Bring together your code from Day 2, Day 3, and yesterday's Shared Tool Registry lab into one project. Create a new file, `orchestrator.py`, in the **same directory** where your existing `bedrock_client.py` and `agents/` package (containing `sql_agent.py` and `retrieval_agent.py`) already live from those earlier labs — this file imports them directly, so it won't run from anywhere else. Every code block from Parts 2, 3, 5, 6, and 7 below builds on the ones before it and belongs in this same file, added in order (Part 4 is a design discussion with no code to add).
+Bring together your code from Day 2, Day 3, and yesterday's Shared Tool Registry lab into one project. Create a new file, `orchestrator.py`, in the **same directory** where your existing `bedrock_client.py` and `agents/` package (containing `sql_agent.py` and `retrieval_agent.py`) already live from those earlier labs — this file imports them directly, so it should be created in the same project directory as the existing modules. Every code block from Parts 2, 3, 5, 6, and 7 below builds on the ones before it and belongs in this same file, added in order (Part 4 is a design discussion with no code to add).
 
 ```bash
 pip install langgraph boto3 python-dotenv --break-system-packages
