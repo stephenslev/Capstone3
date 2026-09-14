@@ -1,6 +1,6 @@
 # Building the Orchestrator
 
-## Table of Contents (Introduction added)
+## Table of Contents
 
 - [Building the Orchestrator](#building-the-orchestrator)
   - [Introduction](#introduction)
