@@ -1,10 +1,5 @@
 # Building the Orchestrator
 
-## Prerequisites
-
-- Multi-Agent Architectures (this morning)
-- Connect SQL Agent and Retrieval Agent to a Shared Tool Registry lab (Day 3)
-
 ## Table of Contents (Introduction added)
 
 - [Building the Orchestrator](#building-the-orchestrator)
@@ -28,7 +23,13 @@
 
 This morning you named the gap: a single agent with two tools doesn't reliably use both. This afternoon you close it, and the interesting part isn't any single node in the graph — it's watching state accumulate across steps that stay decoupled from each other. The router only classifies. Each worker only checks whether it was asked to run. The synthesizer only combines whatever results actually showed up. No node needs to understand what any other node did, which is exactly why this scales past two workers in a way a hand-written `while` loop wouldn't. By Part 8, you'll run the same "both" question that only ever got a single-tool answer from yesterday's `suggest_tool`, and see it correctly draw on both sources this time — a direct, concrete before-and-after for the architecture this whole two-day arc has been building toward.
 
+## Prerequisites
+
+- Multi-Agent Architectures (this morning)
+- Connect SQL Agent and Retrieval Agent to a Shared Tool Registry lab (Day 3)
+
 ## Learning Objectives
+
 By the end of this lesson, you will be able to:
 - Build a LangGraph orchestrator that routes questions to appropriate specialist agents
 - Apply agent tool-design principles to improve routing decisions based on tool scope and boundaries
