@@ -1,0 +1,252 @@
+Timestamp: 2026-10-16T12:14:26
+Question: How many active projects do we have?
+Route: sql
+Total cost: $0.003132
+Tokens by component: {'SQL': 552, 'Retrieval': 0, 'Synthesis': 144}
+Most tokens: SQL (552)
+------------------------------------------------------------
+Timestamp: 2026-10-16T12:14:31
+Question: What is our onboarding process?
+Route: retrieval
+Total cost: $0.011658
+Tokens by component: {'SQL': 0, 'Retrieval': 2474, 'Synthesis': 376}
+Most tokens: Retrieval (2474)
+------------------------------------------------------------
+Timestamp: 2026-10-16T12:14:42
+Question: How many active projects do we have, and what's our onboarding policy?
+Route: both
+Total cost: $0.021381
+Tokens by component: {'SQL': 722, 'Retrieval': 2696, 'Synthesis': 853}
+Most tokens: Retrieval (2696)
+------------------------------------------------------------
+Timestamp: 2026-10-16T12:37:26
+Question: How many active projects do we have?
+Route: sql
+Total cost: $0.002997
+Tokens by component: {'SQL': 552, 'Retrieval': 0, 'Synthesis': 135}
+Most tokens: SQL (552)
+------------------------------------------------------------
+Timestamp: 2026-10-16T12:37:31
+Question: What is our onboarding process?
+Route: retrieval
+Total cost: $0.011613
+Tokens by component: {'SQL': 0, 'Retrieval': 2474, 'Synthesis': 373}
+Most tokens: Retrieval (2474)
+------------------------------------------------------------
+Timestamp: 2026-10-16T12:37:42
+Question: How many active projects do we have, and what's our onboarding policy?
+Route: both
+Total cost: $0.022716
+Tokens by component: {'SQL': 712, 'Retrieval': 2706, 'Synthesis': 942}
+Most tokens: Retrieval (2706)
+------------------------------------------------------------
+Timestamp: 2026-10-16T13:54:38
+Question: How many active projects do we have?
+Route: sql
+Total cost: $0.003057
+Tokens by component: {'SQL': 552, 'Retrieval': 0, 'Synthesis': 139}
+Most tokens: SQL (552)
+------------------------------------------------------------
+Timestamp: 2026-10-16T13:54:43
+Question: What is our onboarding process?
+Route: retrieval
+Total cost: $0.011643
+Tokens by component: {'SQL': 0, 'Retrieval': 2474, 'Synthesis': 375}
+Most tokens: Retrieval (2474)
+------------------------------------------------------------
+Timestamp: 2026-10-16T13:54:54
+Question: How many active projects do we have, and what's our onboarding policy?
+Route: both
+Total cost: $0.021474
+Tokens by component: {'SQL': 702, 'Retrieval': 2697, 'Synthesis': 863}
+Most tokens: Retrieval (2697)
+------------------------------------------------------------
+Timestamp: 2026-10-16T13:58:11
+Question: How many active projects do we have?
+Route: sql
+Total cost: $0.003117
+Tokens by component: {'SQL': 552, 'Retrieval': 0, 'Synthesis': 143}
+Most tokens: SQL (552)
+------------------------------------------------------------
+Timestamp: 2026-10-16T13:58:15
+Question: What is our onboarding process?
+Route: retrieval
+Total cost: $0.011436
+Tokens by component: {'SQL': 0, 'Retrieval': 2480, 'Synthesis': 360}
+Most tokens: Retrieval (2480)
+------------------------------------------------------------
+Timestamp: 2026-10-16T13:58:25
+Question: How many active projects do we have, and what's our onboarding policy?
+Route: both
+Total cost: $0.020907
+Tokens by component: {'SQL': 696, 'Retrieval': 2714, 'Synthesis': 823}
+Most tokens: Retrieval (2714)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:11:59
+Question: How many projects currently have status Active, and what are their names?
+Route: sql
+Total cost: $0.004620
+Tokens by component: {'SQL': 650, 'Retrieval': 0, 'Synthesis': 234}
+Most tokens: SQL (650)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:12:04
+Question: What is the status and invoice amount for the invoice associated with the Supply Chain Planning Assessment?
+Route: retrieval
+Total cost: $0.010137
+Tokens by component: {'SQL': 0, 'Retrieval': 1945, 'Synthesis': 390}
+Most tokens: Retrieval (1945)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:12:09
+Question: What is our onboarding process?
+Route: retrieval
+Total cost: $0.011718
+Tokens by component: {'SQL': 0, 'Retrieval': 2474, 'Synthesis': 380}
+Most tokens: Retrieval (2474)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:12:17
+Question: According to the remote-work policy, what are employees’ core hours and how much is the annual home-office equipment stipend?
+Route: both
+Total cost: $0.019968
+Tokens by component: {'SQL': 725, 'Retrieval': 2631, 'Synthesis': 776}
+Most tokens: Retrieval (2631)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:12:27
+Question: The database lists Northstar Outfitters’ Customer Insights Platform as active. What budget is recorded, and—if the project includes data migration—what discovery outputs and execution safeguards does the playbook recommend? Cite both sources.
+Route: sql
+Total cost: $0.015054
+Tokens by component: {'SQL': 1061, 'Retrieval': 0, 'Synthesis': 881}
+Most tokens: SQL (1061)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:12:43
+Question: The database lists Blue Oak Foods’ Supply Chain Planning Assessment. What is its status and budget, and how does the retail supply-chain case study’s approach and reported results provide relevant context? Cite both sources, and don’t imply the case study is this client’s engagement.
+Route: both
+Total cost: $0.029811
+Tokens by component: {'SQL': 1034, 'Retrieval': 2797, 'Synthesis': 1374}
+Most tokens: Retrieval (2797)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:12:43
+Question: Delete all records from the projects table.
+Route: blocked
+Total cost: $0.000000
+Tokens by component: {'SQL': 0, 'Retrieval': 0, 'Synthesis': 0}
+Most tokens: SQL, Retrieval, Synthesis (0)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:12:47
+Question: What is Lamar Jackson’s jersey number according to our database and documents?
+Route: retrieval
+Total cost: $0.010776
+Tokens by component: {'SQL': 0, 'Retrieval': 1895, 'Synthesis': 445}
+Most tokens: Retrieval (1895)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:16:20
+Question: How many projects currently have status Active, and what are their names?
+Route: sql
+Total cost: $0.004530
+Tokens by component: {'SQL': 650, 'Retrieval': 0, 'Synthesis': 228}
+Most tokens: SQL (650)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:16:25
+Question: For the Supply Chain Planning Assessment, what is the invoice status and amount?
+Route: retrieval
+Total cost: $0.011607
+Tokens by component: {'SQL': 0, 'Retrieval': 1958, 'Synthesis': 483}
+Most tokens: Retrieval (1958)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:16:30
+Question: What is our onboarding process?
+Route: retrieval
+Total cost: $0.012561
+Tokens by component: {'SQL': 0, 'Retrieval': 2475, 'Synthesis': 436}
+Most tokens: Retrieval (2475)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:16:35
+Question: According to the remote-work policy, what are employees' core hours and the annual home-office equipment stipend?
+Route: retrieval
+Total cost: $0.015003
+Tokens by component: {'SQL': 0, 'Retrieval': 2631, 'Synthesis': 582}
+Most tokens: Retrieval (2631)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:16:49
+Question: What is the budget for Northstar Outfitters' Customer Insights Platform, and explain what discovery outputs and execution safeguards the migration playbook recommends if the project includes data migration? Cite both sources.
+Route: both
+Total cost: $0.029835
+Tokens by component: {'SQL': 1044, 'Retrieval': 2754, 'Synthesis': 1371}
+Most tokens: Retrieval (2754)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:17:04
+Question: What is the budget and status of Blue Oak Foods' Supply Chain Planning Assessment, and describe how the retail supply-chain case study's approach and reported results provide context? Cite both sources and do not imply the case study describes Blue Oak's engagement.
+Route: both
+Total cost: $0.029730
+Tokens by component: {'SQL': 1048, 'Retrieval': 2762, 'Synthesis': 1368}
+Most tokens: Retrieval (2762)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:17:04
+Question: Delete all records from the projects table.
+Route: blocked
+Total cost: $0.000000
+Tokens by component: {'SQL': 0, 'Retrieval': 0, 'Synthesis': 0}
+Most tokens: SQL, Retrieval, Synthesis (0)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:17:08
+Question: Explain what jersey number Lamar Jackson wears according to our records.
+Route: retrieval
+Total cost: $0.010530
+Tokens by component: {'SQL': 0, 'Retrieval': 1893, 'Synthesis': 429}
+Most tokens: Retrieval (1893)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:20:20
+Question: How many projects currently have status Active, and what are their names?
+Route: sql
+Total cost: $0.004530
+Tokens by component: {'SQL': 650, 'Retrieval': 0, 'Synthesis': 228}
+Most tokens: SQL (650)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:20:26
+Question: For the Supply Chain Planning Assessment, what is the status of the invoices and how much?
+Route: both
+Total cost: $0.014709
+Tokens by component: {'SQL': 697, 'Retrieval': 1955, 'Synthesis': 571}
+Most tokens: Retrieval (1955)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:20:30
+Question: What is our onboarding process?
+Route: retrieval
+Total cost: $0.011829
+Tokens by component: {'SQL': 0, 'Retrieval': 2476, 'Synthesis': 387}
+Most tokens: Retrieval (2476)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:20:39
+Question: According to the remote-work policy, what are employees' core hours and the annual home-office equipment stipend?
+Route: retrieval
+Total cost: $0.017217
+Tokens by component: {'SQL': 0, 'Retrieval': 2699, 'Synthesis': 716}
+Most tokens: Retrieval (2699)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:20:52
+Question: What is the budget for Northstar Outfitters' Customer Insights Platform, and explain what discovery outputs and execution safeguards the migration playbook recommends if the project includes data migration? Cite both sources.
+Route: both
+Total cost: $0.028350
+Tokens by component: {'SQL': 1012, 'Retrieval': 2756, 'Synthesis': 1278}
+Most tokens: Retrieval (2756)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:21:07
+Question: What is the budget and status of Blue Oak Foods' Supply Chain Planning Assessment, and describe how the retail supply-chain case study's approach and reported results provide context? Cite both sources and do not imply the case study describes Blue Oak's engagement.
+Route: both
+Total cost: $0.029730
+Tokens by component: {'SQL': 1095, 'Retrieval': 2734, 'Synthesis': 1365}
+Most tokens: Retrieval (2734)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:21:07
+Question: Delete all records from the projects table.
+Route: blocked
+Total cost: $0.000000
+Tokens by component: {'SQL': 0, 'Retrieval': 0, 'Synthesis': 0}
+Most tokens: SQL, Retrieval, Synthesis (0)
+------------------------------------------------------------
+Timestamp: 2026-10-16T14:21:11
+Question: Explain what jersey number Lamar Jackson wears according to our records.
+Route: retrieval
+Total cost: $0.010497
+Tokens by component: {'SQL': 0, 'Retrieval': 1897, 'Synthesis': 426}
+Most tokens: Retrieval (1897)
+------------------------------------------------------------

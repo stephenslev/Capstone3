@@ -9,7 +9,9 @@ from requests_aws4auth import AWS4Auth
 from sentence_transformers import SentenceTransformer
 from bedrock_client import invoke_claude
 
-HOST = "search-vector-search-lesson-a3enhrb4w4wuu2w5vv52whqu2q.us-east-1.es.amazonaws.com"
+from response_contract import enforce_response_contract
+
+HOST = "search-vector-search-lesson-kvjcookwvlbcxdztetnwvkylcy.us-east-1.es.amazonaws.com"
 REGION = "us-east-1"
 
 _embed_model = None
@@ -65,7 +67,7 @@ def check_grounding(answer: str, chunks: list[dict]) -> bool:
         return "cannot find" in answer.lower()
     return all(1 <= int(s) <= len(chunks) for s in cited_sources)
 
-
+@enforce_response_contract("retrieval_agent")
 def run_retrieval_agent(question: str) -> dict:
     chunks = retrieve(question)
     if not chunks:

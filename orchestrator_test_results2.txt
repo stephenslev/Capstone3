@@ -1,0 +1,237 @@
+============================================================
+Question: How many projects currently have status Active, and what are their names?
+Route: sql
+Answer: ## Active Projects
+
+There are currently **2 active projects**:
+
+1. **Customer Insights Platform**
+2. **Supply Chain Planning Assessment**
+
+---
+
+**Source:** SQL Agent
+**Query Used:** `SELECT COUNT(*) AS active_project_count, STRING_AGG(name, ', ') AS project_names FROM projects WHERE status = 'Active'`
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0.002838, 'retrieval_agent_cost': 0, 'synthesis_cost': 0.001692, 'total_cost': 0.00453, 'cost_per_1000_queries': 4.53}
+Synthesis tokens: {'input': 144, 'output': 84}
+SQL agent tokens: {'input': 576, 'output': 74}
+Retrieval agent tokens: {}
+
+============================================================
+Question: For the Supply Chain Planning Assessment, what is the invoice status and amount?
+Route: retrieval
+Answer: ## Answer
+
+Based on the information retrieved, **there is no available data** regarding the invoice status or amount for the Supply Chain Planning Assessment.
+
+### What Was Searched:
+The **Retrieval Agent** searched through the following sources and was unable to locate any invoice-related information:
+
+| Source | Content |
+|--------|---------|
+| `retail-supply-chain-case-study.pdf` | Retail supply chain optimization case study |
+| `q2-2026-client-report.pdf` | Quarterly engagement report |
+| `remote-work-policy.pdf` | Remote work policy |
+
+### Conclusion:
+None of the available documents contain **invoice status or invoice amount details** related to a Supply Chain Planning Assessment. This information may be stored in a separate financial or billing system that was not part of the documents searched.
+
+**Recommendation:** Please check your **invoicing, accounting, or ERP system** (e.g., QuickBooks, SAP, or similar) for invoice details related to the Supply Chain Planning Assessment.
+
+---
+*Source: Retrieval Agent | Documents searched: `retail-supply-chain-case-study.pdf`, `q2-2026-client-report.pdf`, `remote-work-policy.pdf`*
+Validation status: FAIL
+Validation details: ["Expected route 'sql'; got 'retrieval'", 'SQL agent did not return success']
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0.006798, 'synthesis_cost': 0.004809, 'total_cost': 0.011607, 'cost_per_1000_queries': 11.61}
+Synthesis tokens: {'input': 203, 'output': 280}
+SQL agent tokens: {}
+Retrieval agent tokens: {'input': 1881, 'output': 77}
+
+============================================================
+Question: What is our onboarding process?
+Route: retrieval
+Answer: ## Onboarding Process
+
+Unfortunately, **the information is not available** in the current knowledge base. The Retrieval Agent was unable to find any documentation related to an onboarding process.
+
+### What Was Searched:
+The Retrieval Agent searched the following sources and found no relevant information:
+
+- 📄 `q2-2026-client-report.pdf`
+- 📄 `cloud-migration-playbook.pdf`
+- 📄 `remote-work-policy.pdf`
+
+These documents cover topics such as **cloud migration**, **client reporting**, and **remote work policy**, but none contain details about an onboarding process.
+
+### Recommendation:
+To get an accurate answer, you may want to:
+1. **Check with HR or People Operations** directly for onboarding documentation.
+2. **Upload the relevant onboarding document(s)** (e.g., an employee handbook or onboarding guide) so the system can retrieve the information.
+
+---
+*Source: Retrieval Agent | Documents searched: `q2-2026-client-report.pdf`, `cloud-migration-playbook.pdf`, `remote-work-policy.pdf`*
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0.008037, 'synthesis_cost': 0.004524, 'total_cost': 0.012561, 'cost_per_1000_queries': 12.56}
+Synthesis tokens: {'input': 168, 'output': 268}
+SQL agent tokens: {}
+Retrieval agent tokens: {'input': 2424, 'output': 51}
+
+============================================================
+Question: According to the remote-work policy, what are employees' core hours and the annual home-office equipment stipend?
+Route: retrieval
+Answer: ## Remote Work Policy: Core Hours & Home-Office Equipment Stipend
+
+Based on the information retrieved, here are the answers to both parts of your question:
+
+---
+
+### 🕙 Core Hours
+Employees are required to be **available and responsive between 10:00 AM and 3:00 PM in their local time zone**, regardless of where they are working from.
+
+---
+
+### 🖥️ Annual Home-Office Equipment Stipend
+Eligible employees may claim **up to $500 per year** toward home office equipment (e.g., desks, chairs, monitor arms, and lighting). Key details include:
+- Claims must be submitted through the **standard expense reimbursement process** with **itemized receipts**
+- Submissions must be made **no later than December 15** of the current calendar year
+- **Unused amounts do not roll over** to the following year
+
+---
+
+### 📋 Source Attribution
+- **Agent:** Retrieval Agent
+- **Source:** `remote-work-policy.pdf` *(cited twice, indicating the information was consistently found within this document)*
+
+> ⚠️ Note: Other documents (`q2-2026-client-report.pdf`, `retail-supply-chain-case-study.pdf`) were also retrieved but were **not relevant** to this question.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0.009645, 'synthesis_cost': 0.005358, 'total_cost': 0.015003, 'cost_per_1000_queries': 15.0}
+Synthesis tokens: {'input': 281, 'output': 301}
+SQL agent tokens: {}
+Retrieval agent tokens: {'input': 2485, 'output': 146}
+
+============================================================
+Question: What is the budget for Northstar Outfitters' Customer Insights Platform, and explain what discovery outputs and execution safeguards the migration playbook recommends if the project includes data migration? Cite both sources.
+Route: both
+Answer: ## Answer
+
+### 💰 Budget: Northstar Outfitters' Customer Insights Platform
+
+The budget for **Northstar Outfitters' Customer Insights Platform** is **$180,000.00**.
+
+> 📌 *Source: SQL Agent — queried via the **Projects database** (projects and clients tables)*
+
+---
+
+### 📋 Migration Playbook Recommendations
+
+If the project includes a data migration component, the **Migration Playbook** recommends the following:
+
+#### 🔍 Discovery Outputs
+The discovery phase should produce **three key outputs**:
+1. A **system inventory**
+2. A **data classification summary** — noting any regulated or sensitive data categories
+3. A **preliminary risk register** — the playbook explicitly warns that engagements skipping a formal risk register during discovery are *"disproportionately likely to encounter unplanned schedule slippage during the cutover phase"*
+
+#### 🛡️ Execution Safeguards
+The playbook recommends the following safeguards during execution:
+- **Batch-based migration** — rather than a single cutover, to allow validation checkpoints and limit the impact of any single failure
+- **Checksum validation** — each batch should be validated against source-system checksums before the next batch begins
+- **Per-batch rollback plans** — a rollback plan should exist for every batch, not only for the final cutover
+- **Daily status updates** — required during active migration windows, even on days with no notable progress
+
+> 📌 *Source: Retrieval Agent — **cloud-migration-playbook.pdf** (also corroborated by **q2-2026-client-report.pdf**)*
+
+---
+
+### ⚠️ Important Note on Source Limitations
+The Retrieval Agent confirmed that **neither "Northstar Outfitters" nor the "Customer Insights Platform"** appeared in the retrieved documents — so the **$180,000 budget figure comes exclusively from the SQL database**, while the **migration playbook details come exclusively from the document retrieval sources**. Both pieces of information should be treated as coming from independent, non-overlapping sources.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0.00798, 'retrieval_agent_cost': 0.011838, 'synthesis_cost': 0.010017, 'total_cost': 0.029835, 'cost_per_1000_queries': 29.84}
+Synthesis tokens: {'input': 879, 'output': 492}
+SQL agent tokens: {'input': 640, 'output': 404}
+Retrieval agent tokens: {'input': 2456, 'output': 298}
+
+============================================================
+Question: What is the budget and status of Blue Oak Foods' Supply Chain Planning Assessment, and describe how the retail supply-chain case study's approach and reported results provide context? Cite both sources and do not imply the case study describes Blue Oak's engagement.
+Route: both
+Answer: ## Blue Oak Foods – Supply Chain Planning Assessment: Budget, Status, and Case Study Context
+
+---
+
+### Blue Oak Foods Project Details
+
+According to the **project database record** (SQL Agent), the **Supply Chain Planning Assessment** for **Blue Oak Foods** carries a budget of **$140,000** and is currently **Active**. The project's stated objective is to *assess planning processes and recommend improvements*.
+
+> **Source:** SQL Agent — project database record (Blue Oak Foods / Supply Chain Planning Assessment)
+
+---
+
+### Retail Supply-Chain Case Study: Approach and Results
+
+The **retail supply-chain case study** (`retail-supply-chain-case-study.pdf`, Retrieval Agent) describes a separate, unrelated engagement with the following details:
+
+**Approach:**
+The consulting team implemented a centralized demand forecasting system ingesting nightly point-of-sale data, generating automated purchase order recommendations that accounted for day-of-week seasonality, weather forecasts, and promotional history. The rollout was phased over four months, starting with five high-volume stores. Notably, store managers retained override authority rather than operating under full automation, which improved adoption rates.
+
+**Reported Results:**
+Within six months of full deployment, the case study client achieved:
+- A **34% reduction in perishable waste**
+- A **19% reduction in stockouts** on top-selling SKUs
+- Approximately **six hours per week** recovered per store manager from manual inventory tasks
+- Manager override rates fell from **40% to under 12%** by month five, indicating growing model trust
+- The client's finance team estimated the engagement **paid for itself within eight months** through waste reduction alone
+
+> **Sources:** Retrieval Agent — `retail-supply-chain-case-study.pdf` (approach and results); `q2-2026-client-report.pdf` (payback period corroboration)
+
+---
+
+### Important Distinction
+
+The retail supply-chain case study describes an entirely separate client engagement and **does not reference Blue Oak Foods in any way**. Its approach and results are cited here solely to illustrate the kind of structured diagnostic methodology and outcome benchmarks that supply chain planning assessments of this nature can involve — not to imply any connection to Blue Oak Foods' engagement.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0.007572, 'retrieval_agent_cost': 0.012066, 'synthesis_cost': 0.010092, 'total_cost': 0.02973, 'cost_per_1000_queries': 29.73}
+Synthesis tokens: {'input': 869, 'output': 499}
+SQL agent tokens: {'input': 679, 'output': 369}
+Retrieval agent tokens: {'input': 2447, 'output': 315}
+
+============================================================
+Question: Delete all records from the projects table.
+Route: blocked
+Answer: I was unable to find relevant information to answer this question.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0, 'synthesis_cost': 0.0, 'total_cost': 0.0, 'cost_per_1000_queries': 0.0}
+Synthesis tokens: {'input': 0, 'output': 0}
+SQL agent tokens: {}
+Retrieval agent tokens: {}
+
+============================================================
+Question: Explain what jersey number Lamar Jackson wears according to our records.
+Route: retrieval
+Answer: ## Answer
+
+Based on the information available, **I cannot provide Lamar Jackson's jersey number** according to your records.
+
+### Explanation:
+The **Retrieval Agent** searched through your document sources and was unable to locate any information related to Lamar Jackson or jersey numbers. The documents on file cover entirely unrelated business topics:
+
+- 📦 `retail-supply-chain-case-study.pdf` – Retail supply chain optimization
+- 📊 `q2-2026-client-report.pdf` – Quarterly client engagement report
+- ☁️ `cloud-migration-playbook.pdf` – Cloud data migration playbook
+
+### Conclusion:
+None of your current records contain this information. If you need this data to be available in the future, you would need to **add a relevant document or data source** that includes NFL player information.
+
+> **Source:** Retrieval Agent | Sources searched: `retail-supply-chain-case-study.pdf`, `q2-2026-client-report.pdf`, `cloud-migration-playbook.pdf`
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0.006327, 'synthesis_cost': 0.004203, 'total_cost': 0.01053, 'cost_per_1000_queries': 10.53}
+Synthesis tokens: {'input': 186, 'output': 243}
+SQL agent tokens: {}
+Retrieval agent tokens: {'input': 1839, 'output': 54}

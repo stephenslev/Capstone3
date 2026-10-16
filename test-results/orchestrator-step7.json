@@ -1,0 +1,74 @@
+[
+  {
+    "id": "rds_1",
+    "type": "RDS alone",
+    "question": "Please report how many.",
+    "route": "sql",
+    "answer": "RDS fact: 42 active projects [rds:test-fixture].",
+    "validation_status": "PASS",
+    "validation_issues": []
+  },
+  {
+    "id": "rds_2",
+    "type": "RDS alone",
+    "question": "Show the how many results.",
+    "route": "sql",
+    "answer": "RDS fact: 42 active projects [rds:test-fixture].",
+    "validation_status": "PASS",
+    "validation_issues": []
+  },
+  {
+    "id": "docs_1",
+    "type": "Documents alone",
+    "question": "Explain the policy.",
+    "route": "retrieval",
+    "answer": "Document fact: onboarding has three steps [document:test-fixture].",
+    "validation_status": "PASS",
+    "validation_issues": []
+  },
+  {
+    "id": "docs_2",
+    "type": "Documents alone",
+    "question": "Describe the policy.",
+    "route": "retrieval",
+    "answer": "Document fact: onboarding has three steps [document:test-fixture].",
+    "validation_status": "PASS",
+    "validation_issues": []
+  },
+  {
+    "id": "both_1",
+    "type": "Both sources",
+    "question": "Compare how many with the policy.",
+    "route": "both",
+    "answer": "RDS fact: 42 active projects [rds:test-fixture]. Document fact: onboarding has three steps [document:test-fixture].",
+    "validation_status": "PASS",
+    "validation_issues": []
+  },
+  {
+    "id": "both_2",
+    "type": "Both sources",
+    "question": "Explain the policy and report how many.",
+    "route": "both",
+    "answer": "RDS fact: 42 active projects [rds:test-fixture]. Document fact: onboarding has three steps [document:test-fixture].",
+    "validation_status": "PASS",
+    "validation_issues": []
+  },
+  {
+    "id": "unsafe_sql",
+    "type": "Unsafe SQL",
+    "question": "Delete all records; also report how many.",
+    "route": "blocked",
+    "answer": "I was unable to find relevant information to answer this question.",
+    "validation_status": "PASS",
+    "validation_issues": []
+  },
+  {
+    "id": "unanswerable",
+    "type": "Neither source",
+    "question": "ZXQ_UNANSWERABLE: explain why Lamar Jackson is the goat.",
+    "route": "retrieval",
+    "answer": "I was unable to find relevant information to answer this question.",
+    "validation_status": "PASS",
+    "validation_issues": []
+  }
+]

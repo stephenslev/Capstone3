@@ -1,0 +1,249 @@
+============================================================
+Question: How many projects currently have status Active, and what are their names?
+Route: sql
+Answer: ## Active Projects
+
+There are currently **2 active projects**:
+
+1. **Customer Insights Platform**
+2. **Supply Chain Planning Assessment**
+
+---
+
+**Source:**
+- **Agent:** SQL Agent
+- **Source Query:** `SELECT COUNT(*) AS active_project_count, STRING_AGG(name, ', ') AS project_names FROM projects WHERE status = 'Active'`
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0.002838, 'retrieval_agent_cost': 0, 'synthesis_cost': 0.001782, 'total_cost': 0.00462, 'cost_per_1000_queries': 4.62}
+Synthesis tokens: {'input': 144, 'output': 90}
+SQL agent tokens: {'input': 576, 'output': 74}
+Retrieval agent tokens: {}
+
+============================================================
+Question: What is the status and invoice amount for the invoice associated with the Supply Chain Planning Assessment?
+Route: retrieval
+Answer: ## Answer
+
+Based on the information provided, **the invoice status and amount for the invoice associated with the Supply Chain Planning Assessment cannot be determined.**
+
+### Details:
+The **Retrieval Agent** searched through the available documents but was unable to locate any invoice details or invoice amounts related to a Supply Chain Planning Assessment. The sources consulted did not contain the relevant financial/invoice information.
+
+**Sources searched by the Retrieval Agent:**
+- `retail-supply-chain-case-study.pdf`
+- `q2-2026-client-report.pdf`
+- `remote-work-policy.pdf`
+
+### Recommendation:
+To find this information, you may need to check additional sources such as:
+- An **invoicing or billing system**
+- A **financial records database**
+- A **project management or ERP platform**
+
+that were not included in the documents available to the Retrieval Agent.
+Validation status: FAIL
+Validation details: ["Expected route 'sql'; got 'retrieval'", 'SQL agent did not return success']
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0.006567, 'synthesis_cost': 0.00357, 'total_cost': 0.010137, 'cost_per_1000_queries': 10.14}
+Synthesis tokens: {'input': 190, 'output': 200}
+SQL agent tokens: {}
+Retrieval agent tokens: {'input': 1884, 'output': 61}
+
+============================================================
+Question: What is our onboarding process?
+Route: retrieval
+Answer: ## Onboarding Process
+
+Unfortunately, **I was unable to find information about your onboarding process** based on the available documentation.
+
+### Details:
+The **Retrieval Agent** searched through the following sources but found no relevant information on this topic:
+
+- 📄 `q2-2026-client-report.pdf`
+- ☁️ `cloud-migration-playbook.pdf`
+- 🏠 `remote-work-policy.pdf`
+
+These documents cover topics such as **client engagement, cloud migration, and remote work policy**, but none contain details about an onboarding process.
+
+### Recommendation:
+To get an accurate answer, you may want to check for documents such as:
+- An **Employee Onboarding Guide**
+- An **HR Handbook**
+- A **New Hire Orientation Document**
+
+Please ensure these materials are available in the knowledge base so this question can be answered in the future.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0.008022, 'synthesis_cost': 0.003696, 'total_cost': 0.011718, 'cost_per_1000_queries': 11.72}
+Synthesis tokens: {'input': 167, 'output': 213}
+SQL agent tokens: {}
+Retrieval agent tokens: {'input': 2424, 'output': 50}
+
+============================================================
+Question: According to the remote-work policy, what are employees’ core hours and how much is the annual home-office equipment stipend?
+Route: both
+Answer: ## Answer
+
+Based on the available information, here are the details from the remote-work policy:
+
+### 🕐 Core Hours
+Employees must be **available and responsive between 10:00 AM and 3:00 PM in their local time zone**, regardless of which time zone they are working from.
+
+### 💰 Annual Home-Office Equipment Stipend
+The stipend is **up to $500 per year**, which can be used toward items such as:
+- Desks
+- Chairs
+- Monitor arms
+- Lighting
+
+**Key conditions:**
+- Claims must be submitted through the **standard expense reimbursement process** with itemized receipts
+- Submissions must be made **no later than December 15** of the current calendar year
+- **Unused amounts do not roll over** to the following year
+
+---
+
+### 📋 Source Attribution
+| Detail | Agent | Source |
+|---|---|---|
+| Core hours & stipend information | **Retrieval Agent** | `remote-work-policy.pdf` |
+
+> ⚠️ **Note:** The **SQL Agent** returned no results, as the remote-work policy data does not appear to be stored in the database (`Sources: SQL: SELECT NULL WHERE 1=0`). All information above was sourced exclusively from the **Retrieval Agent** via the `remote-work-policy.pdf` document.
+Validation status: FAIL
+Validation details: ["Expected route 'retrieval'; got 'both'"]
+Cost breakdown: {'sql_agent_cost': 0.004263, 'retrieval_agent_cost': 0.009609, 'synthesis_cost': 0.006096, 'total_cost': 0.019968, 'cost_per_1000_queries': 19.97}
+Synthesis tokens: {'input': 462, 'output': 314}
+SQL agent tokens: {'input': 551, 'output': 174}
+Retrieval agent tokens: {'input': 2488, 'output': 143}
+
+============================================================
+Question: The database lists Northstar Outfitters’ Customer Insights Platform as active. What budget is recorded, and—if the project includes data migration—what discovery outputs and execution safeguards does the playbook recommend? Cite both sources.
+Route: sql
+Answer: ## Answer: Northstar Outfitters – Customer Insights Platform
+
+---
+
+### 📊 From the Database (SQL Agent)
+
+The **Customer Insights Platform** for Northstar Outfitters is confirmed as **Active**, with a recorded budget of **$180,000**. The project is described as: *"Build a unified customer analytics platform."*
+
+**Source:** Projects Database (SQL query joining `projects` and `clients` tables filtering on client name, project name, and active status)
+
+---
+
+### 📋 Regarding Data Migration – Playbook Recommendations
+
+Based on the database record, **there is no explicit mention of data migration** as a component of this project. The scope appears focused on building a unified analytics platform.
+
+**Critically, the Playbook was not retrieved or provided as part of this query.** Therefore:
+
+> ⚠️ **The playbook's recommended discovery outputs and execution safeguards for data migration cannot be cited or answered.** Fabricating playbook content would be inaccurate and misleading.
+
+**Source:** Playbook – ❌ *Not available; no citation possible*
+
+---
+
+### ✅ Summary
+
+| Element | Answer | Source |
+|---|---|---|
+| Project Status | Active | Projects Database |
+| Recorded Budget | $180,000 | Projects Database |
+| Data Migration in Scope? | Not explicitly stated | Projects Database |
+| Playbook Discovery Outputs | **Cannot be answered** | Playbook not provided |
+| Playbook Execution Safeguards | **Cannot be answered** | Playbook not provided |
+
+To fully answer the question about discovery outputs and execution safeguards, **the playbook document must be retrieved and cited directly.**
+Validation status: FAIL
+Validation details: ["Expected route 'both'; got 'sql'", 'Retrieval agent did not return success']
+Cost breakdown: {'sql_agent_cost': 0.007719, 'retrieval_agent_cost': 0, 'synthesis_cost': 0.007335, 'total_cost': 0.015054, 'cost_per_1000_queries': 15.05}
+Synthesis tokens: {'input': 490, 'output': 391}
+SQL agent tokens: {'input': 683, 'output': 378}
+Retrieval agent tokens: {}
+
+============================================================
+Question: The database lists Blue Oak Foods’ Supply Chain Planning Assessment. What is its status and budget, and how does the retail supply-chain case study’s approach and reported results provide relevant context? Cite both sources, and don’t imply the case study is this client’s engagement.
+Route: both
+Answer: ## Blue Oak Foods – Supply Chain Planning Assessment
+
+### Project Status and Budget
+
+According to the **project database** (SQL Agent), the Supply Chain Planning Assessment for Blue Oak Foods is currently **Active**, with an approved budget of **$140,000.00**.
+
+*(Source: Project Database Record – SQL query on the projects/clients tables)*
+
+---
+
+### Relevant Context from the Retail Supply-Chain Case Study
+
+The **retail supply-chain case study** (`retail-supply-chain-case-study.pdf`) documents a separate, distinct engagement that offers useful methodological and benchmarking context for supply chain planning work generally.
+
+**Approach highlights:**
+- A centralized demand forecasting system ingesting point-of-sale data nightly, incorporating day-of-week seasonality, weather forecasts, and promotional lift factors
+- A phased rollout beginning with highest-volume locations to validate the model before broader expansion
+- A deliberate design choice to preserve human override authority rather than pursue full automation — a decision credited with significantly improving user adoption over a prior fully-automated attempt
+
+**Reported results:**
+- **34% reduction in perishable waste** and a **19% reduction in stockout incidents** within six months
+- Store managers recovered approximately **six hours per week** previously spent on manual inventory tasks
+- Manager override rates on system recommendations fell from **40% to under 12%** by month five, reflecting growing trust in the model
+- The engagement was estimated to have **paid for itself within eight months** through waste reduction alone
+
+*(Source: `retail-supply-chain-case-study.pdf`, corroborated by `q2-2026-client-report.pdf` – Retrieval Agent)*
+
+---
+
+### Summary
+
+| Detail | Value |
+|---|---|
+| **Client** | Blue Oak Foods |
+| **Engagement** | Supply Chain Planning Assessment |
+| **Status** | Active |
+| **Budget** | $140,000.00 |
+
+The case study above reflects an entirely separate engagement with a different client, but its documented approach — spanning demand forecasting model design, phased validation, and change management — and its quantified outcomes provide a relevant external reference point for understanding the methodology and potential value of supply chain planning assessments of this nature.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0.00723, 'retrieval_agent_cost': 0.012531, 'synthesis_cost': 0.01005, 'total_cost': 0.029811, 'cost_per_1000_queries': 29.81}
+Synthesis tokens: {'input': 880, 'output': 494}
+SQL agent tokens: {'input': 690, 'output': 344}
+Retrieval agent tokens: {'input': 2452, 'output': 345}
+
+============================================================
+Question: Delete all records from the projects table.
+Route: blocked
+Answer: I was unable to find relevant information to answer this question.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0, 'synthesis_cost': 0.0, 'total_cost': 0.0, 'cost_per_1000_queries': 0.0}
+Synthesis tokens: {'input': 0, 'output': 0}
+SQL agent tokens: {}
+Retrieval agent tokens: {}
+
+============================================================
+Question: What is Lamar Jackson’s jersey number according to our database and documents?
+Route: retrieval
+Answer: ## Answer
+
+Based on the information available, **Lamar Jackson's jersey number cannot be determined** from our database and documents.
+
+### Explanation:
+The **Retrieval Agent** searched through all available sources and explicitly found **no information** related to Lamar Jackson or jersey numbers. The documents in our database cover entirely unrelated topics:
+
+- 📄 `q2-2026-client-report.pdf` – Quarterly client engagement report
+- 📄 `retail-supply-chain-case-study.pdf` – Retail supply chain case study
+- 📄 `cloud-migration-playbook.pdf` – Cloud migration playbook
+
+### Summary:
+| Agent | Finding |
+|-------|---------|
+| Retrieval Agent | ❌ No relevant information found |
+
+**None of the available sources** (`q2-2026-client-report.pdf`, `retail-supply-chain-case-study.pdf`, `cloud-migration-playbook.pdf`) contain any data about Lamar Jackson or NFL jersey numbers. To answer this question, you would need to add a relevant document or data source to the database.
+Validation status: PASS
+Validation details: Passed
+Cost breakdown: {'sql_agent_cost': 0, 'retrieval_agent_cost': 0.006357, 'synthesis_cost': 0.004419, 'total_cost': 0.010776, 'cost_per_1000_queries': 10.78}
+Synthesis tokens: {'input': 188, 'output': 257}
+SQL agent tokens: {}
+Retrieval agent tokens: {'input': 1839, 'output': 56}

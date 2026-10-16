@@ -14,16 +14,45 @@ validated_agent_solution.validated_sql_agent().
 import os
 import psycopg2
 from bedrock_client import invoke_claude
+from response_contract import enforce_response_contract
 
 SCHEMA_CONTEXT = """
 Tables available:
-- clients(id, name, industry, region, contract_value, created_date)
-- projects(id, client_id, name, status, start_date, end_date, budget)
-- consultants(id, name, grade, specialisation, project_id, billable_hours)
-- invoices(id, project_id, amount, status, due_date, paid_date)
 
-All monetary values are in USD. Dates are in ISO 8601 format.
-status in projects is one of: 'active', 'completed', 'on-hold'.
+- clients(id, name, contact_name, industry, region, contract_value,
+  created_date, billing_address)
+- projects(id, client_id, name, description, status, start_date, end_date,
+  budget)
+- consultants(id, project_id, name, email, specialisation, level,
+  billable_hours, home_office, start_date)
+- invoices(id, project_id, amount, status, due_date, paid_date, invoice_date)
+
+Primary keys:
+- clients.id
+- projects.id
+- consultants.id
+- invoices.id
+
+Foreign keys:
+- projects.client_id references clients.id.
+- consultants.project_id references projects.id and may be NULL.
+- invoices.project_id references projects.id.
+
+Field details:
+- clients.contract_value, projects.budget, and invoices.amount are monetary
+  values in USD.
+- created_date, start_date, end_date, due_date, paid_date, and invoice_date
+  are DATE fields, stored as dates.
+- consultants.start_date is the consultant's firm start date.
+- consultants.specialisation is spelled with an 's'.
+
+Allowed values:
+- projects.status: 'Planned', 'Active', 'Completed', 'Cancelled'.
+- consultants.level: 'Intern', 'Analyst', 'Consultant',
+  'Senior Consultant', 'Manager', 'Senior Manager', 'Partner'.
+- invoices.status: 'Draft', 'Issued', 'Paid', 'Overdue', 'Cancelled'.
+
+Use PostgreSQL syntax. Column and table names must match this schema.
 """
 
 BLOCKED_KEYWORDS = ["DROP", "DELETE", "UPDATE", "INSERT", "ALTER", "TRUNCATE",
@@ -89,7 +118,7 @@ def execute_query_safely(sql: str) -> dict:
     except Exception as e:
         return {"success": False, "error": str(e), "validation": "EXECUTION_ERROR"}
 
-
+@enforce_response_contract("sql_agent")
 def run_sql_agent(question: str) -> dict:
     sql, gen_usage = generate_sql(question)
     result = execute_query_safely(sql)
