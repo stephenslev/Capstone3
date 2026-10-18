@@ -1,3 +1,8 @@
+# Reflection Question
+## Prompt: Of your 8 test questions, which one most tested the limits of your orchestrator's routing and synthesis logic? Was the failure mode (if any) a validation problem, a routing problem, or a synthesis problem, and what does that tell you about where multi-agent systems are still fragile compared to a single well-scoped agent?
+
+Of the 8 test questions, the one over the course of testing and correcting that gave me the most difficulty was one that was supposed to be SQL only. The question was: "For the Supply Chain Planning Assessment, what is the status of the invoices and how much?". This was a routing problem, as all the data needed to answer this question would be found in the provided RDS database. The question specifically uses language in the SQL Tool registry like "invoices" and "how much", while avoiding language in the retrieval agent tool registry. This brings to my attention a major point of fragility in multi-agent system which is the danger of redundant calls. As we discussed in class, a poorly designed orchestrator often calls a worker unnecessarily resulting in a waste of money and time. In this case, I wasted 1955 tokens on the retreival agent: "Retrieval agent tokens: {'input': 1906, 'output': 49}", and cost me 0.006453. 
+
 # Building the Orchestrator
 
 ## Introduction
